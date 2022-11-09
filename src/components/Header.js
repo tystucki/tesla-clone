@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import PhoneIcon from '@mui/icons-material/Phone';
 import { selectCars } from '../features/car/carSlice';
 import { useSelector } from "react-redux"
 
@@ -12,16 +13,17 @@ function Header() {
   return (
     <Container>
         <a>
-            <img src='/images/logo.svg' alt='' />
+            <img src='/images/logo.png' alt='' />
         </a>
         <Menu>
             {cars && cars.map((car, index) => (
                 <a key={index} href='#'>{car}</a>
             ))}
         </Menu>
+        <CallButton> <PhoneIcon />
+            888.5050.4433</CallButton>
         <RightMenu>
-            <a href='#'>Shop</a>
-            <a href='#'>Tesla Account</a>
+        <a href='#'>Login</a>
             <CustomMenu onClick={() => setBurgerStatus(true)} />
         </RightMenu>
         <BurgerNav show={burgerStatus}>
@@ -31,16 +33,8 @@ function Header() {
             {cars && cars.map((car, index) => (
                 <li key={index}><a href='#'>{car}</a></li>
             ))}
+            <li><a href='#'>Shop</a></li>
 
-            <li><a href='#'>Used Inventory</a></li>
-            <li><a href='#'>Trade-in</a></li>
-            <li><a href='#'>Cyber Truck</a></li>
-            <li><a href='#'>Roadster</a></li>
-            <li><a href='#'>Semi</a></li>
-            <li><a href='#'>Charging</a></li>
-            <li><a href='#'>Find Us</a></li>
-            <li><a href='#'>Support</a></li>
-            <li><a href='#'>Investor Relations</a></li>
         </BurgerNav>
     </Container>
   )
@@ -49,6 +43,7 @@ function Header() {
 export default Header
 
 const Container = styled.div`
+    background-color: white;
     min-height: 60px;
     position: fixed;
     display: flex;
@@ -59,6 +54,10 @@ const Container = styled.div`
     left: 0;
     right: 0;
     z-index: 1;
+
+    img {
+        height: 100px;
+    }
 `
 
 const Menu = styled.div`
@@ -130,3 +129,15 @@ const CloseWrapper = styled.div`
     display: flex;
     justify-content: flex-end;
 `
+
+const CallButton = styled.div`
+    background-color: #ED413C;
+    color: #fff;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 999px;
+    padding: 10px 35px;
+    margin-right: 2%;
+`
+

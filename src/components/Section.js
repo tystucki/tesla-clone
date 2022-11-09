@@ -14,9 +14,11 @@ function Section({ title, description, leftBtnText, rightBtnText, backgroundImg 
         <Buttons>
         <Fade>
             <ButtonGroup>
-                <LeftButton>
-                    { leftBtnText }
-                </LeftButton>
+            { leftBtnText &&
+                    <LeftButton>
+                        {leftBtnText}
+                    </LeftButton>
+                    }
                     { rightBtnText &&
                     <RightButton>
                         {rightBtnText}
@@ -44,7 +46,11 @@ const Wrap = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-image: ${props => `url("/images/${props.bgImage}")`}
+    background-image: ${props => `url("/images/${props.bgImage}")`};
+
+    p { 
+        color: black;
+    }
 `
 
 const ItemText = styled.div`
@@ -67,7 +73,7 @@ const ButtonGroup = styled.div`
 `
 
 const LeftButton = styled.div`
-    background-color: rgba(23, 26, 32, 0.8);
+    background-color: #ED413C;
     height: 40px;
     width: 256px;
     color: white;
